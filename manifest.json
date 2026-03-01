@@ -1,0 +1,14 @@
+{
+  "addOns": {
+    "common": {
+      "name": "Meet Side Panel",
+      "logoUrl": "https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/dashboard/default/48px.svg"
+    },
+    "meet": {
+      "web": {
+        "sidePanelUrl": "https://script.google.com/macros/s/AKfycbzlmbrR1EdiHD7eflRe8DVqdr9rwDA32I8U5f7aOkVN8_xZLUrsIyi7EIsEOaVVq7vU/exec?page=sidepanel",
+        "addOnOrigins": ["https://script.google.com"]
+      }
+    }
+  }
+}

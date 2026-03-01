@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meet Main Stage</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://www.gstatic.com/meetjs/addons/1.1.0/meet.addons.js"></script>
+  </head>
+  <body class="mainstage">
+    <div class="stage">
+      <h1>共有コンテンツ</h1>
+      <p class="subtitle">全参加者に表示されています</p>
+
+      <div class="content-area">
+        <p>ここに共有したい情報を表示します。</p>
+        <p>このコンテンツはミーティング参加者全員のメインステージに表示されます。</p>
+      </div>
+    </div>
+
+    <script>
+      var CLOUD_PROJECT_NUMBER = "301456358603";
+
+      async function init() {
+        try {
+          var session = await window.meet.addon.createAddonSession({
+            cloudProjectNumber: CLOUD_PROJECT_NUMBER,
+          });
+          await session.createMainStageClient();
+        } catch (e) {
+          console.error("メインステージ初期化エラー:", e);
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>

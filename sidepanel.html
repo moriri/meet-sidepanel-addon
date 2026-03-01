@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meet Side Panel</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://www.gstatic.com/meetjs/addons/1.1.0/meet.addons.js"></script>
+  </head>
+  <body>
+    <div class="panel">
+      <header>
+        <h1>Meet Side Panel</h1>
+        <span id="status" class="status">初期化中...</span>
+      </header>
+
+      <section>
+        <h2>アクティビティ</h2>
+        <p>全参加者のメインステージに共有コンテンツを表示します。</p>
+        <button id="start-btn" disabled>全員に表示</button>
+        <button id="stop-btn" class="secondary" hidden>表示を終了</button>
+      </section>
+
+      <section id="meeting-info">
+        <h2>ミーティング情報</h2>
+        <p id="meeting-id">--</p>
+      </section>
+    </div>
+
+    <script>
+      var CLOUD_PROJECT_NUMBER = "301456358603";
+      var MAIN_STAGE_URL = new URL("mainstage.html", window.location.href).href;
+
+      var sidePanelClient;
+
+      async function init() {
+        var statusEl = document.getElementById("status");
+        var startBtn = document.getElementById("start-btn");
+        var stopBtn = document.getElementById("stop-btn");
+
+        try {
+          var session = await window.meet.addon.createAddonSession({
+            cloudProjectNumber: CLOUD_PROJECT_NUMBER,
+          });
+          sidePanelClient = await session.createSidePanelClient();
+
+          var meetingInfo = await sidePanelClient.getMeetingInfo();
+          document.getElementById("meeting-id").textContent =
+            meetingInfo.meetingId || "取得できませんでした";
+
+          statusEl.textContent = "接続済み";
+          statusEl.classList.add("connected");
+          startBtn.disabled = false;
+        } catch (e) {
+          statusEl.textContent = "エラー: " + e.message;
+          statusEl.classList.add("error");
+          console.error("初期化エラー:", e);
+        }
+
+        startBtn.addEventListener("click", async function () {
+          try {
+            await sidePanelClient.startActivity({
+              mainStageUrl: MAIN_STAGE_URL,
+            });
+            startBtn.hidden = true;
+            stopBtn.hidden = false;
+          } catch (e) {
+            console.error("アクティビティ開始エラー:", e);
+          }
+        });
+
+        stopBtn.addEventListener("click", async function () {
+          try {
+            await sidePanelClient.endActivity();
+            startBtn.hidden = false;
+            stopBtn.hidden = true;
+          } catch (e) {
+            console.error("アクティビティ終了エラー:", e);
+          }
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>

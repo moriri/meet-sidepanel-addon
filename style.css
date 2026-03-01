@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Google Sans", "Noto Sans JP", sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* --- サイドパネル --- */
+.panel {
+  padding: 16px;
+  max-width: 360px;
+}
+
+.panel header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.panel h1 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.status {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: #333;
+}
+
+.status.connected {
+  background: #1b5e20;
+  color: #a5d6a7;
+}
+
+.status.error {
+  background: #b71c1c;
+  color: #ef9a9a;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+section p {
+  margin-bottom: 12px;
+  color: #bbb;
+  font-size: 13px;
+}
+
+button {
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #8ab4f8;
+  color: #1a1a2e;
+  transition: background 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background: #aecbfa;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: #3c4043;
+  color: #e0e0e0;
+}
+
+button.secondary:hover {
+  background: #5f6368;
+}
+
+#meeting-id {
+  font-family: monospace;
+  font-size: 13px;
+  color: #999;
+}
+
+/* --- メインステージ --- */
+.mainstage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.stage {
+  text-align: center;
+  max-width: 640px;
+  padding: 40px;
+}
+
+.stage h1 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #8ab4f8;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.content-area {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: left;
+}
+
+.content-area p {
+  color: #bbb;
+  margin-bottom: 12px;
+}
+
+.content-area p:last-child {
+  margin-bottom: 0;
+}
