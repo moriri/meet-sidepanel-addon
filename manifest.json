@@ -6,8 +6,8 @@
     },
     "meet": {
       "web": {
-        "sidePanelUrl": "https://script.google.com/macros/s/AKfycbzlmbrR1EdiHD7eflRe8DVqdr9rwDA32I8U5f7aOkVN8_xZLUrsIyi7EIsEOaVVq7vU/exec?page=sidepanel",
-        "addOnOrigins": ["https://script.google.com"]
+        "sidePanelUrl": "https://moriri.github.io/meet-sidepanel-addon/sidepanel.html",
+        "addOnOrigins": ["https://moriri.github.io"]
       }
     }
   }
